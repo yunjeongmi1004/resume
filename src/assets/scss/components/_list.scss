@@ -1,0 +1,31 @@
+@use '../abstracts/' as *;
+@use './text' as  *;
+
+
+
+$listStyle: (
+  1: (
+    "className": ".list-type4",
+    "marker": "dot",
+    "color": #ddd,
+    "textType": ".text-type3",
+    "width": 4,
+    "height": 4,
+    "radius": 100,
+		"margin" : rem(10) rem(4) 0,
+  ),
+);
+
+@layer Components.List{
+@include listStyle($listStyle, 1);
+}
+
+// 만약 추가작성할 CSS코드가 있다면 {}안쪽에 추가 작성한다.
+// @include listStyle($listStyle, 1) {
+//   line-height:2;
+//   main & {
+//     color: blue;
+//   }
+// }
+
+

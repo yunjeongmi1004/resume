@@ -1,0 +1,58 @@
+@use '../abstracts/' as *;
+@use "sass:list";
+
+
+$buttonSize: (
+    1:(
+        "className": ".base",
+        "height": 40,
+        "fontSize": 16,
+        "paddingInline": 25,
+        "borderWidth": 1,
+        "fontWeight": null,
+    ),
+
+
+);
+$buttonColor:(
+    1:(    
+        'className' : '.blue',
+        'bgColor' :#000,
+        'borderColor' : #ddd,
+        'color' : #fff,
+    ),
+
+);
+
+$buttonIcon:(
+    1:(    
+        'className' : '.ico1',
+        'direction' : after,
+        'imgName' : null,
+        'width' : 16,
+        'height' : 16,
+    ),
+);
+
+
+@layer Components.Button{
+.btn{
+    display:inline-flex;
+    align-items:center;
+    gap:rem(8);
+    box-sizing:border-box;
+    justify-content:center;
+    &.fullsize{
+        width:100%
+    }
+    @for $idx from 1 through list.length($buttonSize) {
+        @include buttonSize($buttonSize, $idx);
+    }
+    @for $index from 1 through list.length($buttonColor) {
+        @include buttonColor($buttonColor, $index);
+    }
+    @for $index from 1 through list.length($buttonIcon) {
+        @include buttonIcon($buttonIcon, $index);
+    }
+}
+}

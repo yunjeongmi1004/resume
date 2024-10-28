@@ -1,0 +1,22 @@
+[name="guide"]{
+    summary{
+        background:rgb(46, 46, 46);
+        color:#fff4f4;
+        font-size:20px;
+        padding:10px;
+
+    }
+    ~ details{
+        margin-top:20px;
+    }
+    &[open]{
+        border:1px solid rgb(46, 46, 46);
+        summary + * {
+            padding:10px;
+            font-size:14px;
+        }
+        h2{
+            padding-block:10px;
+        }
+    }
+}

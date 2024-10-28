@@ -1,0 +1,109 @@
+@use "../abstracts/" as *;
+@use "sass:list";
+
+$formSetting:(
+    "height":rem(40),
+    "border":rem(1) solid #eee,
+    "borderRadius":rem(4),
+    "bgColor":#fff,
+    "paddingInline":rem(12),
+    "fontColor":#ddd,
+    "fontSize":rem(14),
+    "lineHeight":1,
+    "letterSpacing":rem(-.5),
+    "placeholderColor":#ddd,
+    "disableBgColor":rgba(#eee, .1),
+    "readonlyBgColor":rgba(#eee, .05),
+);
+
+
+$selectSetting:(
+    "bgUrl":null,
+    "iconPosition":rem(12),
+    "bgWidth":6,
+    "paddingInline":12,
+);
+
+
+$radioCheckSetting:(
+    1:(
+        "className" : ".radio-type1",
+        "offImage" :null,
+        "onImage" : null,
+        "width" : rem(24),
+        "height":rem(24)
+    ),
+); 
+
+
+%form{
+    height:map-get($formSetting,height);
+    border:map-get($formSetting,border);
+    box-sizing: border-box;
+    border-radius:map-get($formSetting,borderRadius);
+    background-color:map-get($formSetting,bgColor);
+    padding-inline:map-get($formSetting, paddingInline);
+    color:map-get($formSetting, fontColor);
+    font-size: map-get($formSetting, fontSize);
+    line-height: map-get($formSetting, lineHeight);
+    letter-spacing: map-get($formSetting, letterSpacing);
+
+    &::placeholder{
+        color:map-get($formSetting, placeholderColor);
+    }
+    &:disabled{
+        background-color:map-get($formSetting,disableBgColor);
+    }&[readonly]{
+        background-color:map-get($formSetting,readonlyBgColor);
+
+    }
+}
+
+%label{
+    display:inline-flex;
+    gap:rem(4);
+    align-items: center;
+    color:#ddd;
+    font-size: rem(12);
+    line-height: rem(12);
+    letter-spacing: rem(-.5);
+}
+
+
+@layer Components.Form{
+.input{
+    @extend %form;
+    width:var(--w, 100%);
+}
+
+
+
+.select{
+    $result:map-get($selectSetting, paddingInline) * 2 + map-get($selectSetting, bgWidth);
+    @extend %form;
+    @include background(map-get($selectSetting, bgUrl), right map-get($selectSetting, iconPosition) center);
+    padding-right:rem($result);
+    appearance: none;
+    width:var(--w, 100%);
+}
+
+.textarea{
+    @extend %form;
+    width:100%;
+    height:rem(var(--height, 10));
+    padding-block:rem(15);
+    &::placeholder{
+        color:#ddd;
+        font-size: rem(12);
+        line-height: rem(12);
+        letter-spacing: rem(-0.5);
+        font-family: "Noto Sans KR";
+    }
+}
+
+
+
+@for $idx from 1 through list.length($radioCheckSetting) {
+    @include RadioCheckbox($radioCheckSetting, $idx);
+}
+}

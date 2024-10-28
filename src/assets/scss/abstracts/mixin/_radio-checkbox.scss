@@ -1,0 +1,25 @@
+@use './background' as *;
+@use './ally-hidden' as *;
+
+@mixin RadioCheckbox($mapName, $index){
+
+    #{map-get($mapName, $index, className)}{
+        @include ally-hidden;
+        + label{
+            @extend %label;
+                &::before{
+                    @include background(map-get($mapName, $index, offImage));
+                    content:'';
+                    width:map-get($mapName, $index, width);
+                    height:map-get($mapName, $index, height);
+                }
+        }
+        &:checked{
+            + label{
+                &::before{
+                    @include background(map-get($mapName, $index, onImage));
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,21 @@
+@use '../abstracts/' as *;
+
+$round: 8, 10, 20, 30, "-full";
+
+@layer Components.Rounded{
+.rounded{
+    @each $size in $round {
+        @if $size == '-full'{
+            &#{$size}{
+                border-radius:rem(10000);
+            }
+        } @else {
+            &#{$size}{
+                border-radius:rem($size);
+            }   
+        }
+
+    }
+
+}
+}

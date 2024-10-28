@@ -1,0 +1,7 @@
+@use '../abstracts/' as *;
+
+@layer Layout.IR{
+.ally-hidden{
+    @include ally-hidden;
+}
+}

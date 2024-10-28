@@ -1,0 +1,8 @@
+@use '../abstracts/' as *;
+
+
+@layer Components.Table{
+caption{
+    @include ally-hidden;
+}
+}
