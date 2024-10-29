@@ -1,26 +1,75 @@
 @use "../abstracts/" as *;
 
-
 main{
-  color:$primary;
-  max-width:1024px;
+  @include mobile{
+    padding:2.4rem 2rem;
+  }
   margin:0 auto;
   padding:7.4rem 4.8rem;
+  color:$primary;
+}
+
+main.dark{
+ background-color:$bgdark;
+ color:$primarydark;
 }
 
 section{
   margin-top:8rem;
+  max-width:1024px;
+  width:100%;
+  overflow:hidden;
+  margin-left:auto;
+  margin-right:auto;
 
   .title{
     margin-bottom:3rem;
     padding-top:8rem;
     border-top:0.1rem solid #dadada;
-   font-size:2.2rem;
-   color:#000;
-   font-weight:500;
+    font-size:2.2rem;
+    color:#000;
+    font-weight:500;
+   .dark &{
+        color:#fff;
+        border-top-color:#585858;
+    }
   }
   p{
     font-size:1.6rem;
     line-height:2;
+  }
+}
+
+.theme{
+  position:fixed;
+  top:3rem;
+  right:3rem;
+  width:80px;
+  height:35px;
+  background:#ccc;
+  transition: all .4s;
+  border-radius:34px;
+  text-align: right;
+  padding:0 13px;
+  color:#464646;
+
+  .dark &{
+    background:#fff;
+    text-align:left;
+    color:#444;
+  }
+  em{
+    position:absolute;
+    top:4px;
+    left:4px;
+    width:27px;
+    height:27px;
+    border-radius:100px;
+    background:#fff;
+    transition: .4s;
+    .dark &{
+      transform: translateX(45px);
+      background:#444;
+    }
   }
 }

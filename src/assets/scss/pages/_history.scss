@@ -16,15 +16,26 @@
                 padding:1rem 0;
                 border:0;
                 border-bottom:1px dotted #eee;
+                .dark &{
+                    border-bottom-color:#585858;
+                }
+                &:last-child{border-bottom:0}
+
             }
             flex:1;
             margin-top:1rem;
             border-left:0.1rem dotted #eee;
+            .dark &{
+                border-left-color:#585858;
+            }
             padding-left:2rem;
             &:first-child{
                 @include mobile{
                     padding:1rem 0;
                     border-bottom:1px dotted #eee;
+                    .dark &{
+                        border-bottom-color:#585858;
+                    }
                 }
                 border:0;
                 padding:0;
@@ -37,6 +48,9 @@
         dd{
             margin-top:1rem;
             color:$secondary;
+            .dark &{
+                color:$secondarydark;
+            }
         }
     }
 }
@@ -46,7 +60,13 @@
     .personal-history{
         &__table dl{
             flex:auto;
-            max-width: 140px;
+            max-width: 200px;
+            @include mobile{
+                &{
+                    border-bottom:0;
+                }
+
+            }
         }
     }
 
@@ -55,15 +75,28 @@
 .project-history{
     &__table{
         .flexbox{
+            @include mobile{
+                flex-direction: column;
+                &:last-child{
+                    border-bottom:0;
+                }
+            }
             display:flex;
-            justify-content: space-between;
             align-items:baseline;
             font-size:1.4rem;
             border-bottom:1px dotted #eee;
             gap:1rem;
-            padding:2rem 0;
+            padding:3.4rem 0;
+            .dark &{
+                border-bottom-color:#585858;
+            }
+            >div{
+                width:360px;
+                max-width:360px;
+            }
             .ptitle{
                 font-size:1.3rem;
+                font-weight:500;
                 span{
                     position:relative;
                     padding-right:10px;
@@ -98,22 +131,25 @@
                 }
             }
             ul{
-                min-width:400px;
                 text-align: left;
             }
 
             li{
                 position:relative;
-                padding-left:2rem;
+                padding-left:1.6rem;
+                margin-bottom:0.1rem;
                 &:before{
                     content:'';
                     position:absolute;
-                    top:7px;
+                    top:8px;
                     left:2px;
                     width:.3rem;
                     height:.3rem;
                     background:#000;
                     border-radius:100px;
+                    .dark &{
+                        background:#fff;
+                    }
                 }
 
             }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState }  from "react";
 import About from "../components/About";
 import Introduce from "../components/Introduce";
 import PersonalHistory from "../components/PersonalHistory";
@@ -7,14 +7,21 @@ import Education from "../components/Education";
 import Skill from "../components/Skill";
 
 function HomeView() {
+
+    const [isDark, setIsDark] = useState(false);
+
     return (
-        <main>
-        <About />
-        <Introduce />
-        <PersonalHistory />
-        <ProjectHistory />
-        <Education />
-        <Skill />
+        <main className={`App ${isDark ? "dark" : ""}`}>
+          <button className="theme" onClick={() => {setIsDark(!isDark);}}>
+            {isDark ? "Light" : "Dark"}
+            <em></em>
+          </button>
+          <About />
+          <Introduce />
+          <PersonalHistory />
+          <ProjectHistory />
+          <Education />
+          <Skill />
         </main>
   
     );

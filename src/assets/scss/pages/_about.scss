@@ -3,8 +3,20 @@
 
 .about{
     &__title{
+        @include mobile{
+            font-size:2rem;
+        }
+        display:inline-flex;
+        flex-direction: column;
         font-size:2.8rem;
         font-weight:600;
+        span{
+            display:inline-block;
+            overflow:hidden;
+            white-space: nowrap;
+            border-right: .1em solid orange;
+            animation: typing 3s 0.1s steps(30, end),  blink-caret .5s step-end infinite;;
+        }
     }
     &__table{
         @include mobile{
@@ -23,6 +35,9 @@
         dd{
             margin-top:10px;
             color:$secondary;
+            .dark &{
+                color:$secondarydark;
+            }
             a:hover{
                 background:rgba(0,0,0,0.5);
                 color:#eee;
@@ -31,3 +46,15 @@
     }
 
 }
+
+/* The typing effect */
+@keyframes typing {
+    from { width: 0 }
+    to { width: 100%}
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: orange }
+  }
