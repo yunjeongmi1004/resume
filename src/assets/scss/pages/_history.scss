@@ -4,14 +4,28 @@
 .personal-history{
 
     &__table{
+        @include mobile{
+          flex-wrap:wrap;
+        }
         display:flex;
         font-size:1.4rem;
         dl{
+            @include mobile{
+                width:50%;
+                flex:1 1 40%;
+                padding:1rem 0;
+                border:0;
+                border-bottom:1px dotted #eee;
+            }
             flex:1;
             margin-top:1rem;
             border-left:0.1rem dotted #eee;
             padding-left:2rem;
             &:first-child{
+                @include mobile{
+                    padding:1rem 0;
+                    border-bottom:1px dotted #eee;
+                }
                 border:0;
                 padding:0;
             }
@@ -23,6 +37,86 @@
         dd{
             margin-top:1rem;
             color:$secondary;
+        }
+    }
+}
+
+.education{
+
+    .personal-history{
+        &__table dl{
+            flex:auto;
+            max-width: 140px;
+        }
+    }
+
+}
+
+.project-history{
+    &__table{
+        .flexbox{
+            display:flex;
+            justify-content: space-between;
+            align-items:baseline;
+            font-size:1.4rem;
+            border-bottom:1px dotted #eee;
+            gap:1rem;
+            padding:2rem 0;
+            .ptitle{
+                font-size:1.3rem;
+                span{
+                    position:relative;
+                    padding-right:10px;
+                    &::after{
+                        content:'';
+                        width:1px;
+                        height:10px;
+                        background:#ddd;
+                        position:absolute;
+                        top:50%;
+                        transform:translateY(-50%);
+                        right:5px;
+                    }
+                }
+            }
+            .name{
+                display:block;
+                margin-top:0.5rem;
+                font-weight:500;
+                font-size:1.6rem;
+            }
+            .info{
+                font-size:1.3rem;
+            }
+            .stack{
+                margin-top:.4rem;
+                font-size:1.2rem;
+                strong{
+                    font-weight:500;
+                    display:inline-block;
+                    padding-right:1rem;
+                }
+            }
+            ul{
+                min-width:400px;
+                text-align: left;
+            }
+
+            li{
+                position:relative;
+                padding-left:2rem;
+                &:before{
+                    content:'';
+                    position:absolute;
+                    top:7px;
+                    left:2px;
+                    width:.3rem;
+                    height:.3rem;
+                    background:#000;
+                    border-radius:100px;
+                }
+
+            }
         }
     }
 }

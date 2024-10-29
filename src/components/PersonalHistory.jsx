@@ -31,7 +31,7 @@ const PersonalHistoryTable = [
 function PersonalHistory() {
   return (
       <section className="personal-history">
-          <h2 class="title">업무경험</h2>
+          <h2 className="title">경력 요약</h2>
           <div className="personal-history__table">
             {PersonalHistoryTable.map((item, key) =>(
                 <dl key={key}>

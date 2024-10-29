@@ -22,7 +22,7 @@ const aboutTable = [
 function About() {
   return (
       <section className="about">
-        <h1 class="about__title">안녕하세요. <br />퍼블리셔 윤정미입니다.</h1>
+        <h1 className="about__title">안녕하세요. <br />퍼블리셔 윤정미입니다.</h1>
         <div className="about__table">
             {aboutTable.map((item, key) =>(
             <dl key={key}>
